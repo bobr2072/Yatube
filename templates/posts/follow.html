@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}Подписки {{ request.user.username }}{% endblock %}
+
+{% block header %}
+<div class="container py-5">
+  <h1>
+    Подписки {{ request.user.username }}
+  </h1>
+{% endblock %}
+
+{% block content %}
+ <div class="container py-5">
+  {% include 'posts/includes/switcher.html' with follow=True %}
+  {% for post in page_obj %}
+    {% include 'posts/includes/posts.html'%}
+  {% endfor %}
+  {% include 'posts/includes/paginator.html' %}
+ </div>
+ {% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %} Пост {{ post.text|truncatechars:30 }} {% endblock %}
+
+{% block content%}
+
+<style>
+  aside {
+   background: #f0f0f0;
+   padding: 10px;
+   width: 200px;
+   float: left;
+   margin-right: 100px;
+  }
+  article {
+   display: flex;
+  }
+  #card {
+    max-width: 730px;
+    max-height: 10000px;
+  }
+ </style>
+
+<div class="container py-5" class="responsive">
+    <aside class="col-12 col-md-3">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Автор: <a href="{% url 'posts:profile' post.author.get_username %}">{{ post.author.username }}</a></li>
+        <li class="list-group-item">Всего постов пользователя: {{ all_posts.count }}</li>
+        <li class="list-group-item">Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
+        {% if post.author == request.user %}
+          <li class="list-group-item"><a href="{% url 'posts:post_edit' post.id %}">Редактировать</a></li>
+        {% endif %}
+        {% if post.group %}
+          <li class="list-group-item"><a href="{% url 'posts:group_list' post.group.slug %}">Все записи группы {{ group.title }}</a></li>
+        {% endif %}
+      </ul>
+    </aside>
+
+  <acticle class='col-12 col-md-9'>
+    {% thumbnail post.image "2000x2000" upscale=True as im %}
+      <img id='card' class='card-img my-2' src='{{ im.url }}'>
+    {% endthumbnail %}
+    <p class="text-break">{{ post.text|linebreaksbr }}</p>
+    {% include 'posts/includes/comment.html' %}
+  </article>
+</div>
+{% endblock %}

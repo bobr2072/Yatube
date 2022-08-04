@@ -1,0 +1,68 @@
+{% load static %}
+<style>
+  a:active {color:#0000FF}
+</style>
+<head>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" /
+<link rel="icon" href="/fav.ico" type="image/png" >
+<link rel="apple-touch-icon" href="/static/img/fav/apple-touch-icon.png" >
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/static/img/fav/favicon-32x32.png"
+>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/static/img/fav/favicon-16x16.png"
+>
+</head>
+<meta name="msapplication-TileColor" content="#000" />
+<meta name="theme-color" content="#ffffff" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+
+<nav class="navbar navbar-light" alink="#1DDD19" style="background-color: lightskyblue">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img
+        src="/static/img/logo.png"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      />
+      <span style="color: red">Ya</span>tube
+    </a>
+    {% with request.resolver_match.view_name as view_name %}
+    <ul class="nav nav-pills">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link {% if view_name  == 'posts:post_create' %}active{% endif %}" href="{% url 'posts:post_create' %}">Новая запись</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if view_name  == 'posts:group_create' %}active{% endif %}" href="{% url 'posts:group_create' %}">Создать свою группу</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-light" href="{% url 'users:logout' %}" class="active">Выйти</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'posts:profile' user.username %}">Профиль {{ user.username }}</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link {% if view_name  == 'users:login' %}active{% endif %}" href="{% url 'users:login' %}" class="active">Войти</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if view_name  == 'users:signup' %}active{% endif %}" href="{% url 'users:signup' %}" class="active">Регистрация</a>
+      </li>
+      {% endif %}
+      {% endwith %}
+    </ul>
+  </div>
+</nav>
+  </div>
+</nav>

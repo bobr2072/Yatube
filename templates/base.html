@@ -1,0 +1,13 @@
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% include 'posts/includes/header.html' %}
+</head>
+
+<body>
+  {% block header %}{% endblock %}
+  {% block content %}{% endblock %}
+
+  <footer class="border-top text-center py-3">
+    {% include 'posts/includes/footer.html' %}
+  </footer>
+</body>
