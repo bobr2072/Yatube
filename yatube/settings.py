@@ -1,8 +1,11 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '_uzcd2q9!h#ccih19r6^%%5dt@9-&*rm1x-72+bwy8=dqxd7d2'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = False
 
@@ -88,9 +91,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 EMPTY_VALUE = '--пусто--'
 
