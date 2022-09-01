@@ -5,11 +5,11 @@ load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = SECRET_KEY = '_uzcd2q9!h#ccih19r6^%%5dt@9-&*rm1x-72+bwy8=dqxd7d2'
+SECRET_KEY = '_uzcd2q9!h#ccih19r6^%%5dt@9-&*rm1x-72+bwy8=dqxd7d2'
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['84.201.167.73', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -91,13 +91,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 EMPTY_VALUE = '--пусто--'
 
