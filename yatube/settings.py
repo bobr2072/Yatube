@@ -9,7 +9,14 @@ SECRET_KEY = '_uzcd2q9!h#ccih19r6^%%5dt@9-&*rm1x-72+bwy8=dqxd7d2'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['84.201.167.73', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    '51.250.24.29',
+    '127.0.0.1',
+    'localhost', 
+    'bobr-yatube.ddns.net',
+    'bobr.pythonanywhere.com',
+    'www.bobr.pythonanywhere.com'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -93,7 +100,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 EMPTY_VALUE = '--пусто--'
 
@@ -106,16 +117,6 @@ LOGIN_REDIRECT_URL = 'posts:index'
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # указываем директорию, в которую будут складываться файлы писем
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
-
-
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '[::1]',
-    'testserver',
-    'www.bobr.pythonanywhere.com',
-    'bobr.pythonanywhere.com',
-]
 
 INTERNAL_IPS = [
     '127.0.0.1',
