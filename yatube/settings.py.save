@@ -9,14 +9,7 @@ SECRET_KEY = '_uzcd2q9!h#ccih19r6^%%5dt@9-&*rm1x-72+bwy8=dqxd7d2'
 
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '51.250.24.29',
-    '127.0.0.1',
-    'localhost', 
-    'bobr-yatube.ddns.net',
-    'bobr.pythonanywhere.com',
-    'www.bobr.pythonanywhere.com'
-]
+ALLOWED_HOSTS = ['51.250.109.217', '127.0.0.1', 'localhost', bobr-yatube.ddns.net]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -67,12 +60,8 @@ WSGI_APPLICATION = 'yatube.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT')
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -105,6 +94,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 EMPTY_VALUE = '--пусто--'
 
